@@ -1,0 +1,48 @@
+.auth {
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    margin-bottom: 0;
+  }
+
+  .ref {
+    color: green;
+    font-size: 18px;
+    margin-bottom: 15px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .input {
+      height: 30px;
+      margin-bottom: 10px;
+      padding: 0 15px;
+    }
+
+    .submit {
+      width: 80px;
+      height: 35px;
+      background-color: rgb(9, 107, 9);
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin: 0 0 0 auto;
+
+      &:hover {
+        background-color: rgb(31, 192, 44);
+      }
+    }
+  }
+}

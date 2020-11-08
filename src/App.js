@@ -4,13 +4,19 @@ import { Switch, Route } from 'react-router-dom';
 
 import Article from './pages/article';
 import GlobalFeed from './pages/globalFeed';
+import { TopBar, Authentication } from './components';
 
 const App = () => {
   return (
-    <Switch>
-      <Route path="/" exact component={GlobalFeed} />
-      <Route path="/articles" exact component={Article} />
-    </Switch>
+    <div className="container">
+      <TopBar />
+      <Switch>
+        <Route path="/" exact component={GlobalFeed} />
+        <Route path="/login" component={Authentication} />
+        <Route path="/register" component={Authentication} />
+        <Route path="/articles" component={Article} />
+      </Switch>
+    </div>
   );
 };
 
