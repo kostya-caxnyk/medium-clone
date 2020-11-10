@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import s from './Authentication.module.scss';
 
@@ -13,6 +14,12 @@ const Authentication = () => {
     setEmail('');
     setPassword('');
   };
+
+  useEffect(() => {
+    axios('https://conduit.production.ready.io/api/users/login', {
+      method: 'post',
+    });
+  }, []);
 
   return (
     <div className={s.auth}>
