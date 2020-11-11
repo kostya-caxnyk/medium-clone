@@ -7,7 +7,7 @@ const TopBar = () => {
   return (
     <nav className={s.navbar}>
       <Link to="/" className={s.logo}>
-        Conduit
+        Medium
       </Link>
 
       <NavLink to="/" className={s.link} exact>

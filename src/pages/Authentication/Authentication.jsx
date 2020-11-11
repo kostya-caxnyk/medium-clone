@@ -1,0 +1,99 @@
+import React, { useEffect, useState, useContext } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import classnames from 'classnames';
+
+import s from './Authentication.module.scss';
+
+import useFetch from '../../hooks/useFetch';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+const Authentication = (props) => {
+  const isLogin = props.match.path === '/login';
+
+  const pageTitle = isLogin ? 'Sign In' : 'Sign Up';
+  const descrioptionLink = isLogin ? '/register' : '/login';
+  const descrioptionText = isLogin ? 'Need an account?' : 'Have an account?';
+  const apiUrl = isLogin ? '/users/login' : '/users';
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false);
+  const [{ isLoading, response, error }, doFetch] = useFetch(apiUrl);
+  const [, setToken] = useLocalStorage('token');
+  const [, setCurrentUserState] = useContext(CurrentUserContext);
+  console.log(error);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setUsername('');
+    setEmail('');
+    setPassword('');
+
+    const user = isLogin ? { email, password } : { username, email, password };
+
+    doFetch({
+      method: 'post',
+      data: {
+        user,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (response) {
+      setToken(response.user.token);
+      setIsSuccessfullSubmit(true);
+      setCurrentUserState((state) => ({
+        ...state,
+        isLoggedIn: true,
+        isLoading: false,
+        currentUser: response.user,
+      }));
+    }
+  }, [response, setToken, setCurrentUserState]);
+
+  if (isSuccessfullSubmit) {
+    return <Redirect to="/" />;
+  }
+
+  return (
+    <div className={s.auth}>
+      <h1 className={s.title}>{pageTitle}</h1>
+      <Link to={descrioptionLink} className={s.ref}>
+        {descrioptionText}
+      </Link>
+      <form className={s.form} onSubmit={handleSubmit}>
+        {!isLogin && (
+          <input
+            type="text"
+            placeholder="Username"
+            className={s.input}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        )}
+        <input
+          type="email"
+          placeholder="Email"
+          className={s.input}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className={s.input}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" className={classnames(s.submit)} disabled={isLoading}>
+          {pageTitle}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Authentication;
