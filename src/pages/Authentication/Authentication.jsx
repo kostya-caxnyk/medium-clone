@@ -7,6 +7,7 @@ import s from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { BackendErrorMessages } from '../../components';
 
 const Authentication = (props) => {
   const isLogin = props.match.path === '/login';
@@ -23,13 +24,9 @@ const Authentication = (props) => {
   const [{ isLoading, response, error }, doFetch] = useFetch(apiUrl);
   const [, setToken] = useLocalStorage('token');
   const [, setCurrentUserState] = useContext(CurrentUserContext);
-  console.log(error);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setUsername('');
-    setEmail('');
-    setPassword('');
 
     const user = isLogin ? { email, password } : { username, email, password };
 
@@ -45,6 +42,9 @@ const Authentication = (props) => {
     if (response) {
       setToken(response.user.token);
       setIsSuccessfullSubmit(true);
+      setUsername('');
+      setEmail('');
+      setPassword('');
       setCurrentUserState((state) => ({
         ...state,
         isLoggedIn: true,
@@ -65,6 +65,7 @@ const Authentication = (props) => {
         {descrioptionText}
       </Link>
       <form className={s.form} onSubmit={handleSubmit}>
+        {error && <BackendErrorMessages backendError={error.errors} />}
         {!isLogin && (
           <input
             type="text"
