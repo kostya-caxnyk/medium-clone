@@ -29,9 +29,10 @@ const TopBar = () => {
       {currentUserState.isLoggedIn && (
         <>
           <NavLink to="/articles/new" className={s.link}>
+            <i className="far fa-edit"></i>
             New Post
           </NavLink>
-          <NavLink to={`/profiles/${currentUserState.currentUser.name}`} className={s.link}>
+          <NavLink to={`/profiles/${currentUserState.currentUser.username}`} className={s.link}>
             {currentUserState.currentUser.username}
           </NavLink>
         </>
