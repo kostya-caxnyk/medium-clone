@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Article from '../pages/article';
-import GlobalFeed from '../pages/globalFeed';
+import GlobalFeed from '../pages/globalFeed/GlobalFeed';
 import { TopBar } from '.';
 import Authentication from '../pages/Authentication/Authentication';
 import { CurrentUserProvider } from '../contexts/CurrentUserContext';

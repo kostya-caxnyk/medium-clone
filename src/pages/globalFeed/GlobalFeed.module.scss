@@ -1,0 +1,25 @@
+.banner {
+  height: 250px;
+  border: 2px solid green;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 22px;
+  }
+}
+
+.title {
+  color: green;
+  font-size: 60px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+
+.articles {
+  margin-right: 20px;
+}

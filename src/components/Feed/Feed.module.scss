@@ -1,0 +1,64 @@
+.article {
+  padding: 20px 0;
+  border-top: 1px solid rgb(158, 155, 155);
+}
+
+.meta {
+  display: flex;
+}
+
+.photo {
+  width: 35px;
+  height: 35px;
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.info {
+  margin-left: 10px;
+}
+
+.author {
+  display: block;
+  color: green;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  margin-top: 15px;
+}
+
+.description {
+  margin: 0;
+  margin: 10px 0 20px;
+  font-size: 16px;
+  color: rgb(134, 133, 133);
+}
+
+.more {
+  font-size: 14px;
+  color: rgb(155, 151, 151);
+}
+
+.tagList {
+  display: flex;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+.tag {
+  border: 1px solid rgb(167, 164, 164);
+  border-radius: 40%;
+  list-style: none;
+  margin-right: 5px;
+  padding: 4px 5px;
+  font-size: 15px;
+  color: rgb(83, 81, 81);
+}
