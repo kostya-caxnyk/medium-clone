@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import s from './GlobalFeed.module.scss';
 
-import { Feed } from '../../components';
+import { Feed, Pagination } from '../../components';
 import useFetch from '../../hooks/useFetch';
 
 const GlobalFeed = () => {
@@ -22,7 +22,12 @@ const GlobalFeed = () => {
         <div className={s.articles}>
           {isLoading && <div>Loading...</div>}
           {error && <div>Some error has occured</div>}
-          {!isLoading && response && <Feed articles={response.articles} />}
+          {!isLoading && response && (
+            <>
+              <Feed articles={response.articles} />
+              <Pagination total={500} limit={10} url="/" currentPage={2} />
+            </>
+          )}
         </div>
         <div className={s.tags}>Popular tags</div>
       </div>
