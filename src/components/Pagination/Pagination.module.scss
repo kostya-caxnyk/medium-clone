@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.link {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #000;
+  border: 1px solid rgb(145, 148, 145);
+  cursor: pointer;
+  margin: 2px;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background-color: rgb(145, 148, 145);
+  }
+}
+
+.active {
+  .link {
+    color: #fff;
+    background-color: green;
+    pointer-events: none;
+  }
+}

@@ -47,19 +47,3 @@
   font-size: 14px;
   color: rgb(155, 151, 151);
 }
-
-.tagList {
-  display: flex;
-  margin: 0;
-  justify-content: flex-end;
-}
-
-.tag {
-  border: 1px solid rgb(167, 164, 164);
-  border-radius: 40%;
-  list-style: none;
-  margin-right: 5px;
-  padding: 4px 5px;
-  font-size: 15px;
-  color: rgb(83, 81, 81);
-}

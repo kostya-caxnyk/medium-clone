@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TagList from '../TagList/TagList';
 
 import s from './Feed.module.scss';
 
@@ -24,13 +25,7 @@ const Feed = ({ articles = [] }) => {
               <h1 className={s.title}>{article.title}</h1>
               <p className={s.description}>{article.description}</p>
               <span className={s.more}>Read more...</span>
-              <ul className={s.tagList}>
-                {article.tagList.map((tag) => (
-                  <li className={s.tag} key={tag}>
-                    {tag}
-                  </li>
-                ))}
-              </ul>
+              <TagList tags={article.tagList} />
             </Link>
           </div>
         );

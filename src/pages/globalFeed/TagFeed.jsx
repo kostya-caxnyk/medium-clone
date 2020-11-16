@@ -11,16 +11,17 @@ import Loading from '../../components/Loading/Loading';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import FeedToggle from '../../components/FeedToggler/FeedToggler';
 
-const GlobalFeed = ({ location, match }) => {
+const TagFeed = ({ location, match }) => {
+  const tagName = match.params.slug;
+
   const { offset, currentPage } = getPaginator(location.search);
-  const stringifyParams = stringify({ limit, offset });
+  const stringifyParams = stringify({ limit, offset, tag: tagName });
+  const apiUrl = `/articles?${stringifyParams}`;
 
-  const apiUrl = `/articles${match.path === '/feed' ? '/feed' : ''}?${stringifyParams}`;
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
-
   useEffect(() => {
     doFetch();
-  }, [doFetch, currentPage, apiUrl]);
+  }, [doFetch, currentPage, tagName]);
 
   return (
     <div className={s.homepage}>
@@ -31,7 +32,7 @@ const GlobalFeed = ({ location, match }) => {
 
       <div className={s.content}>
         <div>
-          <FeedToggle />
+          <FeedToggle tagName={tagName} />
           <div className={s.articles}>
             {isLoading && <Loading />}
             {error && <ErrorMessage />}
@@ -55,4 +56,4 @@ const GlobalFeed = ({ location, match }) => {
   );
 };
 
-export default GlobalFeed;
+export default TagFeed;

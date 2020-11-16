@@ -1,0 +1,16 @@
+.tagList {
+  display: flex;
+  margin: 0;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.tag {
+  border: 1px solid rgb(167, 164, 164);
+  border-radius: 20px;
+  list-style: none;
+  margin: 4px 2px;
+  padding: 4px 5px;
+  font-size: 15px;
+  color: rgb(83, 81, 81);
+}

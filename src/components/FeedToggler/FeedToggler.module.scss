@@ -1,0 +1,15 @@
+.list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.link {
+  padding: 10px;
+  color: grey;
+  font-size: 20px;
+
+  &:hover {
+    color: rgb(22, 22, 22);
+  }
+}
