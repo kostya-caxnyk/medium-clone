@@ -1,0 +1,63 @@
+.form {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    height: 40px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.title {
+  font-size: 20px;
+}
+
+.body {
+  margin-bottom: 15px;
+  padding: 15px;
+  min-height: 200px;
+  font-size: 15px;
+}
+
+.button {
+  min-height: 45px;
+  width: 170px;
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+  align-self: flex-end;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+.tagList {
+  display: flex;
+  margin: 0;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.tag {
+  border-radius: 20px;
+  list-style: none;
+  margin: 4px 2px;
+  padding: 4px 7px 4px 20px;
+  font-size: 15px;
+  color: #fff;
+  display: inline-block;
+  background-color: #818a91;
+
+  position: relative;
+
+  i {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+}

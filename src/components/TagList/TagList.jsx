@@ -3,7 +3,6 @@ import React from 'react';
 import s from './TagList.module.scss';
 
 const TagList = ({ tags }) => {
-  console.log(tags);
   return (
     <ul className={s.tagList}>
       {tags.map((tag) => (

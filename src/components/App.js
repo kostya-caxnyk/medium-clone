@@ -9,6 +9,7 @@ import { TopBar } from '.';
 import Authentication from '../pages/Authentication/Authentication';
 import { CurrentUserProvider } from '../contexts/CurrentUserContext';
 import CurrentUserChecker from './CurrentUserChecker';
+import CreateArticle from '../pages/CreateArticle';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <TopBar />
           <Switch>
             <Route path="/" exact component={GlobalFeed} />
+            <Route path="/articles/new" component={CreateArticle} />
             <Route path="/feed" component={GlobalFeed} />
             <Route path="/tags/:slug" component={TagFeed} />
             <Route path="/login" component={Authentication} />
