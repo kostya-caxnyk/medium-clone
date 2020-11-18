@@ -33,7 +33,7 @@ const Article = ({ match }) => {
     body,
     author: { username, image },
   } = response.article;
-  // сделать отображение edit article/delete article если залогинен и follow/
+  // сделать отображение edit article/delete article если залогинен и follow/fav article в другом случае
   return (
     <div className={s.page}>
       <div className={s.banner}>
