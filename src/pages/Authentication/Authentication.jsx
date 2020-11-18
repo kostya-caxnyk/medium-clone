@@ -45,7 +45,7 @@ const Authentication = (props) => {
       setUsername('');
       setEmail('');
       setPassword('');
-      dispatch({ type: 'SET_ATHORIZED', payload: response.user });
+      dispatch({ type: 'SET_AUTHORIZED', payload: response.user });
     }
   }, [response, setToken, dispatch]);
 

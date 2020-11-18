@@ -25,7 +25,7 @@ const Article = ({ match }) => {
   if (isLoading || !response) {
     return <Loading />;
   }
-  console.log(response);
+
   const {
     title,
     createdAt,
@@ -33,20 +33,28 @@ const Article = ({ match }) => {
     body,
     author: { username, image },
   } = response.article;
-
+  // сделать отображение edit article/delete article если залогинен и follow/
   return (
     <div className={s.page}>
       <div className={s.banner}>
         <h1 className={s.title}>{title}</h1>
-        <div className={s.meta}>
-          <Link to={`/profiles/${username}`} className={s.photo}>
-            <img src={image} alt="" />
-          </Link>
-          <div className={s.info}>
-            <Link to={`/profiles/${username}`} className={s.author}>
-              {username}
+        <div className={s.row}>
+          <div className={s.meta}>
+            <Link to={`/profiles/${username}`} className={s.photo}>
+              <img src={image} alt="" />
             </Link>
-            <span className={s.date}>{createdAt}</span>
+            <div className={s.info}>
+              <Link to={`/profiles/${username}`} className={s.author}>
+                {username}
+              </Link>
+              <span className={s.date}>{createdAt}</span>
+            </div>
+          </div>
+          <div>
+            <Link to={`/articles/${slug}/edit`} onClick={() => console.log()}>
+              Edit Article
+            </Link>
+            <Link to="/">Delete Article</Link>
           </div>
         </div>
       </div>

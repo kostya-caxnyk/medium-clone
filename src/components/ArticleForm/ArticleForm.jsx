@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BackendErrorMessages from '../BackendErrorMessages/BackendErrorMessages';
 
 import s from './ArticleForm.module.scss';
 
 const CreateArticle = ({ initialValues, errors, onSubmit }) => {
-  const [title, setTitle] = useState(initialValues.title || '');
-  const [description, setDescription] = useState(initialValues.description || '');
-  const [body, setBody] = useState(initialValues.body || '');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [body, setBody] = useState('');
   const [tag, setTag] = useState('');
-  const [tagList, setTagList] = useState(initialValues.tagList || []);
+  const [tagList, setTagList] = useState([]);
+
+  useEffect(() => {
+    if (initialValues) {
+      setTitle(initialValues.title);
+      setDescription(initialValues.description);
+      setBody(initialValues.body);
+      setTagList(initialValues.tagList);
+    }
+  }, [initialValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit();
-    console.log(title, description, body, tagList);
+    onSubmit({ title, description, body, tagList });
   };
 
   const handleEnterTag = (e) => {
@@ -23,13 +31,19 @@ const CreateArticle = ({ initialValues, errors, onSubmit }) => {
 
     e.preventDefault();
     setTag('');
+    if (tagList.indexOf(tag) >= 0) {
+      return;
+    }
     setTagList([...tagList, e.target.value]);
   };
 
-  // реализовать удаление тега по клику на крестик, сделать валидацию добавления тега (одинаковый тег не должен добавляться)
+  const deleteTag = (idx) => {
+    const newTagList = [...tagList.slice(0, idx), ...tagList.slice(idx + 1)];
+    setTagList(newTagList);
+  };
 
   return (
-    <div>
+    <div className={s.page}>
       {errors && <BackendErrorMessages backendError={errors} />}
       <form className={s.form} onSubmit={handleSubmit}>
         <input
@@ -64,7 +78,7 @@ const CreateArticle = ({ initialValues, errors, onSubmit }) => {
         <ul className={s.tagList}>
           {tagList.map((tag, idx) => (
             <li className={s.tag} key={tag + idx}>
-              <i className="fas fa-times"></i>
+              <i className="fas fa-times" onClick={() => deleteTag(idx)}></i>
               {tag}
             </li>
           ))}

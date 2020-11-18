@@ -25,12 +25,12 @@ const useFetch = (url) => {
 
       axios(`https://conduit.productionready.io/api${url}`, requestOptions)
         .then((res) => {
-          setIsLoading(false);
           setResponse(res.data);
+          setIsLoading(false);
         })
         .catch((err) => {
-          setIsLoading(false);
           setError(err.response.data);
+          setIsLoading(false);
           console.log('error', err);
         });
     }

@@ -16,7 +16,7 @@ const TopBar = () => {
       <NavLink to="/" className={s.link} exact>
         Home
       </NavLink>
-      {!currentUserState.isLoggedIn && (
+      {currentUserState.isLoggedIn === false && (
         <>
           <NavLink to="/login" className={s.link}>
             Sign in
