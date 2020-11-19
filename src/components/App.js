@@ -11,6 +11,7 @@ import { CurrentUserProvider } from '../contexts/CurrentUserContext';
 import CurrentUserChecker from './CurrentUserChecker';
 import CreateArticle from '../pages/CreateArticle';
 import EditArticle from '../pages/EditArticle';
+import Settings from '../pages/settings';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
               <Route path="/" exact component={GlobalFeed} />
               <Route path="/articles/new" component={CreateArticle} />
               <Route path="/articles/:slug/edit" component={EditArticle} />
+              <Route path="/settings" component={Settings} />
               <Route path="/feed" component={GlobalFeed} />
               <Route path="/tags/:slug" component={TagFeed} />
               <Route path="/login" component={Authentication} />
