@@ -20,6 +20,10 @@ const Pagination = ({ total, limit, url, currentPage }) => {
   const pagesCount = Math.ceil(total / limit);
   const pages = Array(pagesCount).fill(1);
 
+  if (pages < 2) {
+    return null;
+  }
+
   return (
     <div>
       <ul className={s.list}>

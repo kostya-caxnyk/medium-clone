@@ -5,9 +5,7 @@ import s from './FeedToggler.module.scss';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-const activeStyle = {
-  color: 'green',
-};
+const activeStyle = { borderBottom: '2px solid green', color: 'green' };
 
 const FeedToggle = ({ tagName }) => {
   const [currentUserState] = useContext(CurrentUserContext);

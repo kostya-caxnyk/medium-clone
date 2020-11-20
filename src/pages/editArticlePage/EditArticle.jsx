@@ -56,7 +56,7 @@ const EditArticle = ({ match }) => {
   if (isSuccessfullSubmit) {
     return <Redirect to={`/articles/${updateArticleResponse.article.slug}`} />;
   }
-  console.log(updateArticleError);
+
   return (
     <ArticleForm
       errors={updateArticleError && updateArticleError.errors}

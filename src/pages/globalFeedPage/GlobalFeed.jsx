@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
+import { stringify } from 'query-string';
 
 import s from './GlobalFeed.module.scss';
 
-import { Feed, Pagination } from '../../components';
+import {
+  Feed,
+  Pagination,
+  PopularTags,
+  ErrorMessage,
+  FeedToggler,
+  Loading,
+} from '../../components';
 import useFetch from '../../hooks/useFetch';
 import { getPaginator, limit } from '../../utils';
-import { stringify } from 'query-string';
-import Tags from '../../components/PopularTags/PopularTags';
-import Loading from '../../components/Loading/Loading';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import FeedToggle from '../../components/FeedToggler/FeedToggler';
 
 const GlobalFeed = ({ location, match }) => {
   const { offset, currentPage } = getPaginator(location.search);
@@ -30,8 +33,8 @@ const GlobalFeed = ({ location, match }) => {
       </div>
 
       <div className={s.content}>
-        <div>
-          <FeedToggle />
+        <div className={s.left}>
+          <FeedToggler />
           <div className={s.articles}>
             {isLoading && <Loading />}
             {error && <ErrorMessage />}
@@ -49,7 +52,7 @@ const GlobalFeed = ({ location, match }) => {
           </div>
         </div>
 
-        <Tags />
+        <PopularTags />
       </div>
     </div>
   );

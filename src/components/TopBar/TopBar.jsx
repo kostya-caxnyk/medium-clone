@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 import s from './TopBar.module.scss';
-import { Link, NavLink } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const TopBar = () => {

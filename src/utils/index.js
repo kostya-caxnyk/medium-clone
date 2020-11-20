@@ -9,3 +9,11 @@ export const getPaginator = (search) => {
 
   return { currentPage, offset };
 };
+
+export const isAuthor = (currentUserState, username) => {
+  if (!currentUserState.isLoggedIn) {
+    return false;
+  }
+
+  return currentUserState.currentUser.username === username;
+};

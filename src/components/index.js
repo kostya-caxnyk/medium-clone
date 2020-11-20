@@ -1,6 +1,13 @@
 export { default as TopBar } from './TopBar/TopBar';
-export { default as App } from './App';
 export { default as BackendErrorMessages } from './BackendErrorMessages/BackendErrorMessages';
 export { default as Feed } from './Feed/Feed.jsx';
 export { default as Pagination } from './Pagination/Pagination';
 export { default as ArticleForm } from './ArticleForm/ArticleForm';
+export { default as AddToFollowing } from './AddToFollowing/AddToFollowing';
+export { default as AddToFavorites } from './AddToFavorites/AddToFavorites';
+export { default as ErrorMessage } from './ErrorMessage/ErrorMessage';
+export { default as FeedToggler } from './FeedToggler/FeedToggler';
+export { default as Loading } from './Loading/Loading';
+export { default as PopularTags } from './PopularTags/PopularTags';
+export { default as TagList } from './TagList/TagList';
+export { default as ArticleComments } from './ArticleComments/ArticleComments';

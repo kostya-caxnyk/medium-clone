@@ -1,15 +1,20 @@
 import React, { useEffect, useContext, useState } from 'react';
+import classnames from 'classnames';
+import { Link, Redirect } from 'react-router-dom';
 
 import s from './Article.module.scss';
 
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import Loading from '../../components/Loading/Loading';
 import useFetch from '../../hooks/useFetch';
-import { Link, Redirect } from 'react-router-dom';
-import TagList from '../../components/TagList/TagList';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import classnames from 'classnames';
-import AddToFavorites from '../../components/AddToFavorites/AddToFavorites';
+import {
+  AddToFollowing,
+  AddToFavorites,
+  ErrorMessage,
+  TagList,
+  Loading,
+  ArticleComments,
+} from '../../components';
+import { isAuthor } from '../../utils';
 
 const Article = ({ match }) => {
   const [currentUserState] = useContext(CurrentUserContext);
@@ -36,14 +41,6 @@ const Article = ({ match }) => {
     });
   };
 
-  const isAuthor = () => {
-    if (currentUserState.isLoggedIn === null || !fetchArticleResponse) {
-      return false;
-    }
-
-    return currentUserState.currentUser.username === fetchArticleResponse.article.author.username;
-  };
-
   if (error) {
     return <ErrorMessage />;
   }
@@ -53,7 +50,7 @@ const Article = ({ match }) => {
   }
 
   if (isSuccessfullDelete) {
-    return <Redirect tp="/" />;
+    return <Redirect to="/" />;
   }
 
   const {
@@ -82,7 +79,7 @@ const Article = ({ match }) => {
               <span className={s.date}>{createdAt.split('T')[0]}</span>
             </div>
           </div>
-          {isAuthor() ? (
+          {isAuthor(currentUserState, username) ? (
             <div className={s.buttons}>
               <Link to={`/articles/${slug}/edit`} className={s.btn}>
                 <i className={classnames('fas fa-pencil-alt', s.icon)}></i>
@@ -95,16 +92,11 @@ const Article = ({ match }) => {
             </div>
           ) : (
             <div className={s.buttons}>
-              <button
-                onClick={() => console.log()}
-                className={classnames(s.btn, { [s.btnFollowing]: following })}>
-                <i className={classnames('fas fa-plus', s.icon)}></i>
-                {`${favorited ? 'Unfollow' : 'Follow'} ${username}`}
-              </button>
+              <AddToFollowing isFollowing={following} userSlug={username} />
               <AddToFavorites
                 favoritesCount={favoritesCount}
                 isFavorited={favorited}
-                slug={slug}
+                articleSlug={slug}
                 hasLabel
               />
             </div>
@@ -118,6 +110,8 @@ const Article = ({ match }) => {
         </div>
         <TagList tags={tagList} />
       </div>
+
+      <ArticleComments articleSlug={slug} />
     </div>
   );
 };

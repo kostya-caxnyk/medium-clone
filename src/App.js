@@ -1,17 +1,20 @@
 import React from 'react';
-
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import Article from '../pages/article';
-import GlobalFeed from '../pages/globalFeed/GlobalFeed';
-import TagFeed from '../pages/globalFeed/TagFeed';
-import { TopBar } from '.';
-import Authentication from '../pages/Authentication/Authentication';
-import { CurrentUserProvider } from '../contexts/CurrentUserContext';
-import CurrentUserChecker from './CurrentUserChecker';
-import CreateArticle from '../pages/CreateArticle';
-import EditArticle from '../pages/EditArticle';
-import Settings from '../pages/settings';
+import { TopBar } from './components';
+import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import CurrentUserChecker from './utils/CurrentUserChecker';
+
+import {
+  Article,
+  GlobalFeed,
+  TagFeed,
+  Authentication,
+  CreateArticle,
+  EditArticle,
+  Settings,
+  UserProfile,
+} from './pages';
 
 const App = () => {
   return (
@@ -30,6 +33,8 @@ const App = () => {
               <Route path="/login" component={Authentication} />
               <Route path="/register" component={Authentication} />
               <Route path="/articles/:slug/" component={Article} />
+              <Route path="/profiles/:slug" component={UserProfile} />
+              <Route path="/profiles/:slug/favorites" component={UserProfile} />
             </Switch>
           </div>
         </Router>

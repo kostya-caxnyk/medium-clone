@@ -26,7 +26,7 @@ const Feed = ({ articles = [] }) => {
               <AddToFavorites
                 favoritesCount={article.favoritesCount}
                 isFavorited={article.favorited}
-                slug={article.slug}
+                articleSlug={article.slug}
                 hasLabel={false}
               />
             </div>

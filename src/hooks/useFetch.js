@@ -15,6 +15,8 @@ const useFetch = (url) => {
   }, []);
 
   useEffect(() => {
+    let skipGetResponseAfterUnmount = false;
+
     if (isLoading) {
       const requestOptions = {
         ...options,
@@ -25,15 +27,23 @@ const useFetch = (url) => {
 
       axios(`https://conduit.productionready.io/api${url}`, requestOptions)
         .then((res) => {
-          setResponse(res.data);
-          setIsLoading(false);
+          if (!skipGetResponseAfterUnmount) {
+            setResponse(res.data);
+            setIsLoading(false);
+          }
         })
         .catch((err) => {
-          setError(err.response.data);
-          setIsLoading(false);
+          if (!skipGetResponseAfterUnmount) {
+            setError(err.response.data);
+            setIsLoading(false);
+          }
           console.log('error', err);
         });
     }
+
+    return () => {
+      skipGetResponseAfterUnmount = true;
+    };
   }, [isLoading, url, options, token]);
 
   return [{ isLoading, error, response }, doFetch];

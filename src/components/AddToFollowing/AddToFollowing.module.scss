@@ -1,0 +1,25 @@
+.btn {
+  padding: 4px 5px 4px 25px;
+  border: 2px solid rgb(126, 123, 123);
+  border-radius: 4px;
+  margin-right: 4px;
+  color: rgb(126, 123, 123);
+  position: relative;
+
+  &:hover {
+    background-color: rgb(126, 123, 123);
+    color: #fff;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 14px;
+}
+
+.btnFollowing {
+  background-color: rgb(126, 123, 123);
+  color: #fff;
+}
