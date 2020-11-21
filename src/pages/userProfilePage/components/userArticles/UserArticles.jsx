@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { stringify } from 'query-string';
+import PropTypes from 'prop-types';
 
 import s from './UserArticles.module.scss';
 
@@ -35,6 +36,12 @@ const UserArticles = ({ location, isFavorites, username }) => {
       )}
     </div>
   );
+};
+
+UserArticles.propTypes = {
+  username: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  isFavorites: PropTypes.bool.isRequired,
 };
 
 export default UserArticles;

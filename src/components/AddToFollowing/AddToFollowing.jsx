@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import s from './AddToFollowing.module.scss';
 import useFetch from '../../hooks/useFetch';
@@ -33,6 +34,11 @@ const AddToFollowing = ({ isFollowing, userSlug }) => {
       {`${isFollowingWithResponse ? 'Unfollow' : 'Follow'} ${userSlug}`}
     </button>
   );
+};
+
+AddToFollowing.propTypes = {
+  isFollowing: PropTypes.bool.isRequired,
+  userSlug: PropTypes.string.isRequired,
 };
 
 export default AddToFollowing;

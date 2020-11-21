@@ -11,3 +11,4 @@ export { default as Loading } from './Loading/Loading';
 export { default as PopularTags } from './PopularTags/PopularTags';
 export { default as TagList } from './TagList/TagList';
 export { default as ArticleComments } from './ArticleComments/ArticleComments';
+export { default as ErrorBoundry } from './ErrorBoundry/ErrorBoundry';

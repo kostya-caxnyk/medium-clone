@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
-import { ArticleForm } from '../../components';
+import PropTypes from 'prop-types';
 
+import { ArticleForm } from '../../components';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useFetch from '../../hooks/useFetch';
 
@@ -64,6 +65,10 @@ const EditArticle = ({ match }) => {
       onSubmit={onSubmit}
     />
   );
+};
+
+EditArticle.propTypes = {
+  match: PropTypes.object.isRequired,
 };
 
 export default EditArticle;

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import classnames from 'classnames';
 
 import s from './Settings.module.scss';
+
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';

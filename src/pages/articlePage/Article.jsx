@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import classnames from 'classnames';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import s from './Article.module.scss';
 
@@ -114,6 +115,10 @@ const Article = ({ match }) => {
       <ArticleComments articleSlug={slug} />
     </div>
   );
+};
+
+Article.propTypes = {
+  match: PropTypes.object.isRequired,
 };
 
 export default Article;

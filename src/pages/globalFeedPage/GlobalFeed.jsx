@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { stringify } from 'query-string';
+import PropTypes from 'prop-types';
 
 import s from './GlobalFeed.module.scss';
 
@@ -30,6 +31,12 @@ const GlobalFeed = ({ location, match }) => {
       <div className={s.banner}>
         <h1 className={s.title}>Medium clone</h1>
         <p>A place to share knowledge</p>
+        <p className={s.origin}>
+          Original:{' '}
+          <a href="http://angular.realworld.io/" target="blank">
+            http://angular.realworld.io/
+          </a>
+        </p>
       </div>
 
       <div className={s.content}>
@@ -56,6 +63,11 @@ const GlobalFeed = ({ location, match }) => {
       </div>
     </div>
   );
+};
+
+GlobalFeed.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default GlobalFeed;

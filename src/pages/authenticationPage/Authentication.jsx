@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import s from './Authentication.module.scss';
 
@@ -9,8 +10,8 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { BackendErrorMessages } from '../../components';
 
-const Authentication = (props) => {
-  const isLogin = props.match.path === '/login';
+const Authentication = ({ match }) => {
+  const isLogin = match.path === '/login';
 
   const pageTitle = isLogin ? 'Sign In' : 'Sign Up';
   const descrioptionLink = isLogin ? '/register' : '/login';
@@ -90,6 +91,10 @@ const Authentication = (props) => {
       </form>
     </div>
   );
+};
+
+Authentication.propTypes = {
+  match: PropTypes.object.isRequired,
 };
 
 export default Authentication;

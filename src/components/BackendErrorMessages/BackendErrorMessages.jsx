@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import s from './BackendErrorMessages.module.scss';
 
@@ -14,6 +15,10 @@ const BackendErrorMessages = ({ backendError }) => {
       })}
     </ul>
   );
+};
+
+BackendErrorMessages.propTypes = {
+  backendError: PropTypes.object.isRequired,
 };
 
 export default BackendErrorMessages;

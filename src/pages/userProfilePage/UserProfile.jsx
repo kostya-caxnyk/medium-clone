@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import s from './UserProfile.module.scss';
 
@@ -76,6 +77,11 @@ const UserProfile = ({ match, location }) => {
       <UserArticles username={username} location={location} isFavorites={isFavorites} />
     </div>
   );
+};
+
+UserProfile.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default UserProfile;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import s from './FeedToggler.module.scss';
 
@@ -7,7 +8,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const activeStyle = { borderBottom: '2px solid green', color: 'green' };
 
-const FeedToggle = ({ tagName }) => {
+const FeedToggler = ({ tagName }) => {
   const [currentUserState] = useContext(CurrentUserContext);
   const path = currentUserState.isLoggedIn ? '/feed' : '/login';
 
@@ -38,4 +39,8 @@ const FeedToggle = ({ tagName }) => {
   );
 };
 
-export default FeedToggle;
+FeedToggler.propTypes = {
+  tagName: PropTypes.string,
+};
+
+export default FeedToggler;

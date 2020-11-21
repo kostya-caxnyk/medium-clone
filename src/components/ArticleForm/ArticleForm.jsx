@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
 import BackendErrorMessages from '../BackendErrorMessages/BackendErrorMessages';
 
 import s from './ArticleForm.module.scss';
 
-const CreateArticle = ({ initialValues, errors, onSubmit }) => {
+const ArticleForm = ({ initialValues, errors, onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [body, setBody] = useState('');
@@ -95,4 +97,10 @@ const CreateArticle = ({ initialValues, errors, onSubmit }) => {
   );
 };
 
-export default CreateArticle;
+ArticleForm.propTypes = {
+  initialValues: PropTypes.object,
+  onSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.object,
+};
+
+export default ArticleForm;

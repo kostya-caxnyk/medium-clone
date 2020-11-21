@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { stringify } from 'query-string';
 
 import s from './GlobalFeed.module.scss';
 
-import { Feed, Pagination } from '../../components';
+import {
+  Feed,
+  Pagination,
+  PopularTags,
+  Loading,
+  ErrorMessage,
+  FeedToggler,
+} from '../../components';
 import useFetch from '../../hooks/useFetch';
 import { getPaginator, limit } from '../../utils';
-import { stringify } from 'query-string';
-import Tags from '../../components/PopularTags/PopularTags';
-import Loading from '../../components/Loading/Loading';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import FeedToggle from '../../components/FeedToggler/FeedToggler';
 
 const TagFeed = ({ location, match }) => {
   const tagName = match.params.slug;
@@ -32,7 +36,7 @@ const TagFeed = ({ location, match }) => {
 
       <div className={s.content}>
         <div>
-          <FeedToggle tagName={tagName} />
+          <FeedToggler tagName={tagName} />
           <div className={s.articles}>
             {isLoading && <Loading />}
             {error && <ErrorMessage />}
@@ -50,10 +54,15 @@ const TagFeed = ({ location, match }) => {
           </div>
         </div>
 
-        <Tags />
+        <PopularTags />
       </div>
     </div>
   );
+};
+
+TagFeed.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default TagFeed;

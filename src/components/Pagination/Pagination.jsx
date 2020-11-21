@@ -1,8 +1,9 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import s from './Pagination.module.scss';
 import { Link } from 'react-router-dom';
+
+import s from './Pagination.module.scss';
 
 const PaginationItem = ({ page, currentPage, url }) => {
   const classes = classnames(s.item, { [s.active]: currentPage === page });
@@ -33,6 +34,19 @@ const Pagination = ({ total, limit, url, currentPage }) => {
       </ul>
     </div>
   );
+};
+
+PaginationItem.propTypes = {
+  page: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+};
+
+Pagination.propTypes = {
+  total: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default Pagination;

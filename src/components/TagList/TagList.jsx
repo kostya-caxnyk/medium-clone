@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import s from './TagList.module.scss';
 
@@ -12,6 +13,10 @@ const TagList = ({ tags }) => {
       ))}
     </ul>
   );
+};
+
+TagList.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default TagList;

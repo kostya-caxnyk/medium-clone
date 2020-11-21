@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import s from './AddToFavorites.module.scss';
 import useFetch from '../../hooks/useFetch';
@@ -39,6 +40,18 @@ const AddToFavorites = ({ isFavorited, favoritesCount, articleSlug, hasLabel }) 
       {label}
     </button>
   );
+};
+
+AddToFavorites.propTypes = {
+  isFavorited: PropTypes.bool,
+  favoritesCount: PropTypes.number.isRequired,
+  articleSlug: PropTypes.string.isRequired,
+  hasLabel: PropTypes.bool,
+};
+
+AddToFavorites.defaultProps = {
+  isFavorited: false,
+  hasLabel: false,
 };
 
 export default AddToFavorites;

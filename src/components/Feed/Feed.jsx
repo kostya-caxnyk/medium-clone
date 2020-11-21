@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import AddToFavorites from '../AddToFavorites/AddToFavorites';
 import TagList from '../TagList/TagList';
 
@@ -42,6 +44,10 @@ const Feed = ({ articles = [] }) => {
       })}
     </div>
   );
+};
+
+Feed.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 export default Feed;
