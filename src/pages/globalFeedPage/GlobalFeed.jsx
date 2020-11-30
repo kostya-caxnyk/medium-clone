@@ -31,12 +31,6 @@ const GlobalFeed = ({ location, match }) => {
       <div className={s.banner}>
         <h1 className={s.title}>Medium clone</h1>
         <p>A place to share knowledge</p>
-        <p className={s.origin}>
-          Original:{' '}
-          <a href="http://angular.realworld.io/" target="blank">
-            http://angular.realworld.io/
-          </a>
-        </p>
       </div>
 
       <div className={s.content}>

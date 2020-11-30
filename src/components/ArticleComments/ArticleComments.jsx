@@ -51,7 +51,7 @@ const ArticleComments = ({ articleSlug }) => {
     });
   }, [doDeleteComment, deletedCommentId]);
 
-  //vopros
+  //?
   useEffect(() => {
     if (deleteCommentResponse) {
       setComments((comments) => comments.filter(({ id }) => id !== deletedCommentId));
